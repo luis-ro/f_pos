@@ -21,9 +21,9 @@ vent = pygame.display.set_mode((ancho,alto))
 pygame.display.set_caption('Ondas')
 clock = pygame.time.Clock()
 
-sensors = [sensores.sonic(vent, (270,360), 'S1', c_off=GRAY),
-           sensores.sonic(vent, (350,400), 'S2', c_off=GRAY),
-           sensores.sonic(vent, (430,360), 'S3', c_off=GRAY)]
+sensors = [sensores.sonic(vent, (120,380), 'S1', c_off=GRAY),
+           sensores.sonic(vent, (330,450), 'S2', c_off=GRAY),
+           sensores.sonic(vent, (540,380), 'S3', c_off=GRAY)]
 
 class onda(pygame.sprite.Sprite):
     def __init__(self, position, radio=0, velocidad=10, color=(0,0,0)):
@@ -91,7 +91,7 @@ while running:
                 elif e.key==pygame.K_KP3:
                     sensors[2].collide(True)
                 elif e.key==pygame.K_KP_PERIOD:
-                    position = (350, 300)
+                    position = (330, 100)
                     if playground is not True:
                         print(f'prueba equidistancia\t->\t{position}')
                     ondas.append(onda(position, color=DODGE))
