@@ -1,10 +1,10 @@
-# Multilateracion usando DTOA
+# Multilateracion usando [TDOA](https://en.wikipedia.org/wiki/Multilateration#Principle)
 
-El programa consiste en una simulacion previa a la construccion fisica del proyecto
+El programa consiste en una simulacion previa a la construccion fisica del proyecto para comprobar la factibilidad del mismo
 
-## Iniciando
+## Para Iniciar
 
-Para la elaboracion de este programa me base en los principios de multilateracion 
+Para la elaboracion de este programa me base en los principios de multilateracion, especificamente el TDOA (Time Difference Of Arrivals - diferencias de tiempo de llegada)
 
 ### Prerequisitos
 
@@ -15,24 +15,12 @@ Para ejecutar la simulacion es requerido [Python](python.org) con los siguientes
 
 ## Pruebas
 
-Explain how to run the automated tests for this system
-
-```
-Ejemplos
-```
-
-### Explicacion
-
-Explain what these tests test and why
-
-```
-Give an example
-```
+Presionar la tecla 'T' para iniciar a generar ondas en posiciones aleatorias de la pantalla y ver si la posicion calculada es correcta
 
 ## Version
 
-Actualmente en version Beta, pues el funcionamiento solo vale en un caso especifico, cuando todos los sensores son activados a la vez
+Fase Beta - La deteccion de la posicion es inservible para casos practicos
 
 ## Autor
 
-* **Luis Alvear** [Luis Alvear](https://github.com/luis-ro)
+* **[Luis Alvear](https://github.com/luis-ro)**
