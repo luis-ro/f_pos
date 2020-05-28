@@ -72,7 +72,7 @@ def triangular(tiempos_activacion, speed=10):
             dt.append(tiempos[i]-tiempos[i-1])
         d1 = speed*dt[0]
         d2 = speed*dt[1]
-        print(f'\t\tdt1:{d1}\tdt2:{d2}')
+        print(f'\t\tdt1:{d1}\tdt2:{d2}\n\t\t\tspeed: {speed}')
         if d1==0 and d2==0:
             print('Error. Tiempos iguales')
             return None
