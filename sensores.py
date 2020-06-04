@@ -49,7 +49,7 @@ class sonic():
             devolver={'nombre':self.name,'status':self.status, 'pos':(self.x, self.y), 'time':None}
         return devolver
 
-def triangular(tiempos_activacion, speed=10):
+def locate(tiempos_activacion, cant_sensores=3, speed=10):
     '''Lista de listas:
         
     [[nombre1, status, position, time],
@@ -70,18 +70,23 @@ def triangular(tiempos_activacion, speed=10):
         dt=[]
         for i in range(1, len(tiempos)):
             dt.append(tiempos[i]-tiempos[i-1])
+            
         d1 = speed*dt[0]
         d2 = speed*dt[1]
-        print(f'\t\tdt1:{d1}\tdt2:{d2}\n\t\t\tspeed: {speed}')
+        print('\t\t', end='')
+        for num, t in enumerate(dt):
+            print(f'dt{num+1}:{t}',end='\t')
+        print(f'\n\t\t\tspeed: {speed}')
         if d1==0 and d2==0:
             print('Error. Tiempos iguales')
             return None
         else:
-            l=250           #distancia entre sensores
-            distance = (((l**2-d1**2)+(l**2-d2**2))/(2*(d1+d2)))/2   #al sensor del centro
-            # theta = math.pi/2-theta1/2+theta2/2
-            print(f'La distancia es: {distance}')
-            return int(distance)
+            return None
+            # l=250           #distancia entre sensores
+            # distance = (((l**2-d1**2)+(l**2-d2**2))/(2*(d1+d2)))/2   #al sensor del centro
+            # # theta = math.pi/2-theta1/2+theta2/2
+            # print(f'La distancia es: {distance}')
+            # return int(distance)
 
 def tiempos_iguales(t_ACTIV):
     if len(t_ACTIV)==3:
