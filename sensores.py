@@ -1,5 +1,7 @@
 import pygame
 
+from model import predict
+
 class sonic():
     '''
     posicion -> tupla (x,y)
@@ -19,8 +21,8 @@ class sonic():
         self.status=False
         self.congelado=False
         self.time_on=time_on
-        self.on = c_on
-        self.off = c_off
+        self.on = c_on#color on
+        self.off = c_off#color off
 
     def collide(self, status):
         self.status=status
@@ -49,44 +51,38 @@ class sonic():
             devolver={'nombre':self.name,'status':self.status, 'pos':(self.x, self.y), 'time':None}
         return devolver
 
-def locate(tiempos_activacion, cant_sensores=3, speed=10):
+def locate(tiempos_activacion, real, cant_sensors=3, speed=10):
     '''Lista de listas:
         
     [[nombre1, status, position, time],
      [nombre2, status, position, time],
      [nombre3, status, position, time]]
-    
+        ordenado por nombre
     speed es la velocidad de desplazamiento de la onda
     '''
     # import math
     #implementar comprobacion de distancia l
     # import numpy as np
-    ndic=sorted(tiempos_activacion, key=lambda k:k[3])
-    tiempos=[i[3] for i in ndic]
+    tiempos=[i[3] for i in tiempos_activacion]
     num_sensores=len(tiempos)
     if tiempos.count(tiempos[0])==num_sensores:
         return tiempos_iguales(tiempos_activacion)
     else:
-        dt=[]
-        for i in range(1, len(tiempos)):
-            dt.append(tiempos[i]-tiempos[i-1])
-            
-        d1 = speed*dt[0]
-        d2 = speed*dt[1]
-        print('\t\t', end='')
-        for num, t in enumerate(dt):
-            print(f'dt{num+1}:{t}',end='\t')
-        print(f'\n\t\t\tspeed: {speed}')
-        if d1==0 and d2==0:
-            print('Error. Tiempos iguales')
-            return None
+        smallest = min([i[3] for i in tiempos_activacion])
+        for i in tiempos_activacion:
+            i.append(i[3]-smallest)
+        for row in tiempos_activacion:
+            print(f'\t{row}')
+        if cant_sensors==3:
+            predX, predY = predict(speed, tiempos_activacion)
+            predX,predY = int(predX),int(predY)
+            print(f'\t\tPrediction\tReal')
+            print(f'\tX\t   {predX}\t\t{real[0]}')
+            print(f'\tY\t   {predY}\t\t{real[1]}\n')
+            return (predX, predY)
         else:
+            print('Error. Demasiados sensores')
             return None
-            # l=250           #distancia entre sensores
-            # distance = (((l**2-d1**2)+(l**2-d2**2))/(2*(d1+d2)))/2   #al sensor del centro
-            # # theta = math.pi/2-theta1/2+theta2/2
-            # print(f'La distancia es: {distance}')
-            # return int(distance)
 
 def tiempos_iguales(t_ACTIV):
     if len(t_ACTIV)==3:
