@@ -4,7 +4,7 @@ El programa consiste en una simulacion previa a la construccion fisica del proye
 
 ## Para Iniciar
 
-Para la elaboracion de este programa me base en el uso de IA, concretamente, en una regresion lineal con salida multiple (2 en este caso: X y Y)
+Para la elaboracion de este programa me base en el uso de IA, concretamente, en una regresion lineal con salida multiple (2 en este caso: [X, Y])
 
 ### Prerequisitos
 
@@ -41,11 +41,10 @@ Si el modo patio de juegos esta activado, es posible dibujar varias ondas a la v
 
 ## Version
 
-v1.0.0  -   El calculo de la posicion funciona, pero con sin demasiada fiabilidad
-
+v1.0.0  -   El calculo de la posicion funciona, pero sin demasiada exactitud
 ### Notas
 
-En esta version no es posible cambiar de posicion a los sensores ni agregar mas, la IA no esta entrenada para esos casos aun
+En esta version no es posible cambiar de posicion a los sensores ni agregar mas, la IA no esta preparada para dichos casos.
 
 ### Log
 
